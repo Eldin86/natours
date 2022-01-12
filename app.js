@@ -19,7 +19,7 @@ const viewRouter = require('./routes/viewRoutes')
 //Start express app
 const app = express()
 
-app.enable('true proxy')
+// app.enable('true proxy')
 
 //Setup pug engine
 app.set('view engine', 'pug')
