@@ -9,7 +9,7 @@ const hpp = require('hpp')
 const AppError = require('./utils/appError')
 const globalErrorHandler = require('./controllers/errorController')
 const cookieParser = require('cookie-parser')
-
+const compression = require('compression')
 const tourRouter = require('./routes/tourRoutes')
 const userRouter = require('./routes/userRoutes')
 const reviewRouter = require('./routes/reviewRoutes')
@@ -112,6 +112,7 @@ app.use(hpp({
         'difficulty',
         'price'] //allow duplicated fields
 }))
+app.use(compression())
 
 //ROUTES
 app.use('/', viewRouter) //PUG templates

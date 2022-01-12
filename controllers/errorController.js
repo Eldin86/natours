@@ -69,18 +69,14 @@ const handleCastErrorDB = (err) => {
 const handleDuplicateFieldsDB = err => {
 
     const key = Object.keys(err.keyValue).join('');
-    console.log('key', key)
-    //console.log(key, err.keyValue[key])
     const message = `The key '${key}' has duplicate value of '${err.keyValue[key]}'`;
     return new AppError(message, 400)
 }
 
 //For mongoose validation error
 const handleValidationErrorDB = err => {
-    //console.log(err)
     //return message from values in errors object
     const errors = Object.values(err.errors).map(el => el.message)
-    //console.log('errors',errors)
     const message = `Invalid input data. ${errors.join('. ')}`
     return new AppError(message, 400)
 }
