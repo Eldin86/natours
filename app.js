@@ -10,6 +10,8 @@ const AppError = require('./utils/appError')
 const globalErrorHandler = require('./controllers/errorController')
 const cookieParser = require('cookie-parser')
 const compression = require('compression')
+const cors = require('cors')
+
 const tourRouter = require('./routes/tourRoutes')
 const userRouter = require('./routes/userRoutes')
 const reviewRouter = require('./routes/reviewRoutes')
@@ -26,6 +28,9 @@ app.set('view engine', 'pug')
 app.set('views', path.join(__dirname, 'views'))
 
 //GLOBAL MIDDLEWARES
+//Implement CORS
+app.use(cors())
+app.options('*', cors())
 //Serving static files
 app.use(express.static(path.join(__dirname, 'public')))
 
